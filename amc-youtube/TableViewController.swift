@@ -12,63 +12,36 @@ import UIKit
 var playlistsData:[Item] = []
 
 class TableViewController: UITableViewController{
-    var labels:[String] = []
     let lock = NSLock()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(labels.count)
-        
-        Service.grabData {
-            return PLAYLIST_URL_LINK
-        }
-        
-        Service.grabTitleAndVideo { playlist in
-            self.labels.append(playlist.snippet.title)
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-        }
-        
-        Service.grabMediaContent { img_mov, str_mov in
-            previewImages.append(PreviewImagesVideoSet(previewImagesVideos: img_mov))
-            titlesVideo.append(TitleVideoSet(titlesVideoset: str_mov))
-        }
-        
+        Service.grabData(tableView: tableView)
+        print(Service.shared.labels.count)
         print(playlistsData.count)
 
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        print("WILL APPREAR")
-        print(labels.count)
-        print(playlistsData.count)
-        print(previewImages.count)
-        print("that's all )")
     }
     
-    override func viewDidLayoutSubviews() {
-        print("DID SUBVIEWS")
-        print(labels.count)
-        print(playlistsData.count)
-        print(previewImages.count)
-        print("that's all )")
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.reloadData()
     }
+
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-
-        print("MAIN  -------> \(labels.count)")
-        return labels.count
+        print("MAIN  -------> \(Service.shared.labels.count)")
+        return Service.shared.labels.count
     }
 
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "idcell", for: indexPath) as! TableViewCell
-        cell.mytitle.text = labels[indexPath.row]
+        print("cellForRowAt")
+        self.tableView.reloadData()
+        cell.mytitle.text = Service.shared.labels[indexPath.row]
         cell.selectionStyle = .none
         return cell
     }

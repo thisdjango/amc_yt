@@ -10,10 +10,20 @@ import UIKit
 
 
 class Service {
+    
+    static let shared = Service()
 
-    static func grabData(completion: @escaping () -> (String)){
-        let url_str = completion()
-        guard let url = URL(string: url_str) else {
+    let TOKEN = "AIzaSyDvlb82XRQVe0Kyl_olqWyJ1SwddGl_ImQ"
+    let CHANNEL_ID = "UCLtPOhNcK2_oSeJl43y-qWw"
+
+    var labels:[String] = []
+    var previewImages:[PreviewImagesVideoSet] = []
+    var titlesVideo:[TitleVideoSet] = []
+    var videos:[Videos] = []
+    
+    static func grabData(tableView: UITableView){
+        let PLAYLIST_URL_LINK = "https://www.googleapis.com/youtube/v3/playlists?part=snippet&channelId=UCLtPOhNcK2_oSeJl43y-qWw&maxResults=50&key=AIzaSyDvlb82XRQVe0Kyl_olqWyJ1SwddGl_ImQ"
+        guard let url = URL(string: PLAYLIST_URL_LINK) else {
             print("unlucky :(")
             return
         }
@@ -32,21 +42,19 @@ class Service {
                 print("Error: can't parse gists")
                 return
             }
-            
             playlistsData = playlist.items
             print(playlistsData)
+            grabTitleAndVideos(tableView: tableView)
         }
         
         task0.resume()
     }
     
-    static func grabTitleAndVideo(completion: @escaping (Item) -> ()){
+    static func grabTitleAndVideos(tableView: UITableView){
         print("Titles: ")
         for playlist in playlistsData {
-            print(playlist.snippet.title)
-            completion(playlist)
-            
-            let VIDEOS_URL_LINK = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=\(playlist.id)&key=\(TOKEN)"
+
+            let VIDEOS_URL_LINK = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=\(playlist.id)&key=AIzaSyDvlb82XRQVe0Kyl_olqWyJ1SwddGl_ImQ"
             guard let url = URL(string: VIDEOS_URL_LINK) else {
                 print("getVideos unlucky")
                 return
@@ -67,36 +75,42 @@ class Service {
                     return
                 }
                 print("without er")
-                
-                videos.append(videos1)
+                shared.videos.append(videos1)
+                grabMediaContent(tableView: tableView)
             }
             
             task1.resume()
         }
     }
     
-    static func grabMediaContent(completion: @escaping ([UIImage], [String]) -> ()){
+    static func grabMediaContent(tableView: UITableView){
         var str_mov:[String] = []
         var img_mov:[UIImage] = []
-        for video_set in videos {
+        var urlString:String;
+        for video_set in shared.videos {
             for one in video_set.items {
                 str_mov.append(one.snippet.title)
-                let urlString = one.snippet.thumbnails.high.url;
+                print(one.snippet.title)
+                urlString = one.snippet.thumbnails.high.url;
                 guard let url = URL(string: urlString) else { return }
                 let request = URLRequest(url: url)
                 let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-                guard error == nil else {
-                    print(error?.localizedDescription ?? "no description for error provided!\n")
-                    return
+                    guard error == nil else {
+                        print(error?.localizedDescription ?? "no description for error provided!\n")
+                        return
+                    }
+                    guard let data = data else { return }
+                    if let image = UIImage(data: data) {
+                        img_mov.append(image)
+                    }
+                    DispatchQueue.main.async {
+                        tableView.reloadData()
+                    }
                 }
-                guard let data = data else { return }
-                if let image = UIImage(data: data) {
-                    img_mov.append(image)
-                }
-            }
                 task.resume()
             }
-            completion(img_mov, str_mov)
+            shared.previewImages.append(PreviewImagesVideoSet(previewImagesVideos: img_mov))
+            shared.titlesVideo.append(TitleVideoSet(titlesVideoset: str_mov))
             str_mov = [] as [String]
             img_mov = [] as [UIImage]
         }
