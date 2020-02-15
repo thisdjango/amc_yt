@@ -12,18 +12,11 @@ import UIKit
 var playlistsData:[Item] = []
 
 class TableViewController: UITableViewController{
-    let lock = NSLock()
-
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         Service.grabData(tableView: tableView)
-        print(Service.shared.labels.count)
-        print(playlistsData.count)
-
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        tableView.reloadData()
     }
 
     
@@ -32,15 +25,14 @@ class TableViewController: UITableViewController{
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("MAIN  -------> \(Service.shared.labels.count)")
         return Service.shared.labels.count
     }
 
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "idcell", for: indexPath) as! TableViewCell
-        print("cellForRowAt")
         print(Service.shared.labels[indexPath.row])
+        cell.currentIndexPath = indexPath
         cell.mytitle.text = Service.shared.labels[indexPath.row]
         cell.selectionStyle = .none
         return cell

@@ -76,7 +76,7 @@ class Service {
                 }
                 print("without er")
                 shared.videos.append(videos1)
-                grabMediaContent(tableView: tableView)
+                grabMediaContent(tableView: tableView, /)
             }
             
             task1.resume()

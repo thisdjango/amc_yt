@@ -8,8 +8,6 @@
 
 import UIKit
 
-
-
 struct TitleVideoSet{
     var titlesVideoset:[String] = []
 }
@@ -21,11 +19,10 @@ struct PreviewImagesVideoSet{
 
 class TableViewCell: UITableViewCell, UICollectionViewDataSource, UICollectionViewDelegate {
     
-    
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var mytitle: UILabel!
 
-
+    var currentIndexPath: IndexPath = []
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -41,10 +38,9 @@ class TableViewCell: UITableViewCell, UICollectionViewDataSource, UICollectionVi
 //    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        let superIndexPath = getIndexPath()
-        print(Service.shared.previewImages)
-        print("COLLECTIONNN --------> \(Service.shared.previewImages[superIndexPath!.row].previewImagesVideos.count)")
-        return Service.shared.previewImages[superIndexPath!.row].previewImagesVideos.count
+        print("IIIIIIIIIIIIIIIIIIIIII\(Service.shared.previewImages[currentIndexPath.row])")
+        print("COLLECTIONNN --------> \(Service.shared.previewImages[currentIndexPath.row].previewImagesVideos.count)")
+        return Service.shared.previewImages[currentIndexPath.row].previewImagesVideos.count
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath){
@@ -53,24 +49,21 @@ class TableViewCell: UITableViewCell, UICollectionViewDataSource, UICollectionVi
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let myCell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionCell", for: indexPath as IndexPath) as! CollectionViewCell
-        let superIndexPath = getIndexPath()
-        myCell.myimage.image = Service.shared.previewImages[superIndexPath!.row].previewImagesVideos[indexPath.row]
-        myCell.mylabel.text = Service.shared.titlesVideo[superIndexPath!.row].titlesVideoset[indexPath.row]
+        myCell.myimage.image = Service.shared.previewImages[currentIndexPath.row].previewImagesVideos[indexPath.row]
+        myCell.mylabel.text = Service.shared.titlesVideo[currentIndexPath.row].titlesVideoset[indexPath.row]
         return myCell
     }
-    
-    func getIndexPath() -> IndexPath? {
-        guard let superView = self.superview as? UITableView else {
-            print("superview is not a UITableView - getIndexPath")
-            return nil
-        }
-        let indexPath = superView.indexPath(for: self)
-        return indexPath
-    }
 
-
+//    func getIndexPath() -> IndexPath? {
+//
+//        guard let superView = self.superview.viewWithTag(16) as? UITableView else {
+//            print("superview is not a UITableView - getIndexPath")
+//            return nil
+//        }
+//        let indexPath = superView.indexPath(for: self)!
+//        return indexPath
+//    }
 }
-
 extension TableViewCell{
     func setCollectionViewDataSourceDelegate
         <D: UICollectionViewDelegate & UICollectionViewDataSource>
@@ -81,5 +74,3 @@ extension TableViewCell{
         collectionView.reloadData()
     }
 }
-
-
