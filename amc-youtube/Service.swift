@@ -53,7 +53,7 @@ class Service {
     static func grabTitleAndVideos(tableView: UITableView){
         print("Titles: ")
         for playlist in playlistsData {
-
+            shared.labels.append(playlist.snippet.title)
             let VIDEOS_URL_LINK = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=\(playlist.id)&key=AIzaSyDvlb82XRQVe0Kyl_olqWyJ1SwddGl_ImQ"
             guard let url = URL(string: VIDEOS_URL_LINK) else {
                 print("getVideos unlucky")

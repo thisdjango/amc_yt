@@ -40,7 +40,7 @@ class TableViewController: UITableViewController{
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "idcell", for: indexPath) as! TableViewCell
         print("cellForRowAt")
-        self.tableView.reloadData()
+        print(Service.shared.labels[indexPath.row])
         cell.mytitle.text = Service.shared.labels[indexPath.row]
         cell.selectionStyle = .none
         return cell
