@@ -38,7 +38,7 @@ class TableViewCell: UITableViewCell, UICollectionViewDataSource, UICollectionVi
 //    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print("IIIIIIIIIIIIIIIIIIIIII\(Service.shared.previewImages[currentIndexPath.row])")
+        print("IIIIIIIIIIIIIIIIIIIIII  \(Service.shared.previewImages)")
         print("COLLECTIONNN --------> \(Service.shared.previewImages[currentIndexPath.row].previewImagesVideos.count)")
         return Service.shared.previewImages[currentIndexPath.row].previewImagesVideos.count
     }

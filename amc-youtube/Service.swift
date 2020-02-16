@@ -15,7 +15,9 @@ class Service {
 
     let TOKEN = "AIzaSyDvlb82XRQVe0Kyl_olqWyJ1SwddGl_ImQ"
     let CHANNEL_ID = "UCLtPOhNcK2_oSeJl43y-qWw"
-
+    
+    var tmp_titles:[String] = []
+    var tmp_imgs:[UIImage] = []
     var labels:[String] = []
     var previewImages:[PreviewImagesVideoSet] = []
     var titlesVideo:[TitleVideoSet] = []
@@ -84,34 +86,43 @@ class Service {
     }
     
     static func grabMediaContent(tableView: UITableView, video_set: Videos){
-        var str_mov:[String] = []
-        var img_mov:[UIImage] = []
+        
         var urlString:String;
         for one in video_set.items {
-                str_mov.append(one.snippet.title)
-                print(one.snippet.title)
-                urlString = one.snippet.thumbnails.high.url;
-                guard let url = URL(string: urlString) else { return }
-                let request = URLRequest(url: url)
-                let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-                    guard error == nil else {
-                        print(error?.localizedDescription ?? "no description for error provided!\n")
-                        return
-                    }
-                    guard let data = data else { return }
-                    if let image = UIImage(data: data) {
-                        img_mov.append(image)
-                    }
-                    DispatchQueue.main.async {
-                        tableView.reloadData()
-                    }
+            urlString = one.snippet.thumbnails.high.url;
+            
+            guard let url = URL(string: urlString) else { return }
+            let request = URLRequest(url: url)
+            let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+                guard error == nil else {
+                    print(error?.localizedDescription ?? "no description for error provided!\n")
+                    return
                 }
-                task.resume()
+                guard let data = data else { return }
+                if let image = UIImage(data: data) {
+                    shared.tmp_imgs.append(image)
+                    shared.tmp_titles.append(one.snippet.title)
+                    print("AAAAAAAAAAASSSSSS")
+                    print(shared.tmp_titles)
+                    print(shared.tmp_imgs)
+                    print(image)
+                }
+               
+                DispatchQueue.main.async {
+                    tableView.reloadData()
+                }
+                
             }
-            shared.previewImages.append(PreviewImagesVideoSet(previewImagesVideos: img_mov))
-            shared.titlesVideo.append(TitleVideoSet(titlesVideoset: str_mov))
-            str_mov = [] as [String]
-            img_mov = [] as [UIImage]
+            task.resume()
+            }
+        shared.previewImages.append(PreviewImagesVideoSet(previewImagesVideos: shared.tmp_imgs))
+        shared.titlesVideo.append(TitleVideoSet(titlesVideoset: shared.tmp_titles))
+        print("JJJJJJJJJJJJJJJJJ")
+        print(shared.tmp_titles)
+        print(shared.tmp_imgs)
+        shared.tmp_titles = [] as [String]
+        shared.tmp_imgs = [] as [UIImage]
+        
         }
     
 }
