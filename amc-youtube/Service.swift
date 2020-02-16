@@ -76,19 +76,18 @@ class Service {
                 }
                 print("without er")
                 shared.videos.append(videos1)
-                grabMediaContent(tableView: tableView, /)
+                grabMediaContent(tableView: tableView, video_set: videos1)
             }
             
             task1.resume()
         }
     }
     
-    static func grabMediaContent(tableView: UITableView){
+    static func grabMediaContent(tableView: UITableView, video_set: Videos){
         var str_mov:[String] = []
         var img_mov:[UIImage] = []
         var urlString:String;
-        for video_set in shared.videos {
-            for one in video_set.items {
+        for one in video_set.items {
                 str_mov.append(one.snippet.title)
                 print(one.snippet.title)
                 urlString = one.snippet.thumbnails.high.url;
@@ -114,5 +113,5 @@ class Service {
             str_mov = [] as [String]
             img_mov = [] as [UIImage]
         }
-    }
+    
 }
