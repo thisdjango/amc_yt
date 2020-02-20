@@ -86,8 +86,8 @@ class Service {
     }
     
     static func grabMediaContent(tableView: UITableView, video_set: Videos){
-        
-        var urlString:String;
+        DispatchQueue.global(qos: .userInitiated).sync {
+        var urlString:String
         for one in video_set.items {
             urlString = one.snippet.thumbnails.high.url;
             
@@ -122,7 +122,7 @@ class Service {
         print(shared.tmp_imgs)
         shared.tmp_titles = [] as [String]
         shared.tmp_imgs = [] as [UIImage]
-        
+        }
         }
     
 }
