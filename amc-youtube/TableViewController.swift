@@ -9,16 +9,32 @@
 import UIKit
 //import ListPlaceholder
 
-var playlistsData:[Item] = []
+struct TitleVideoSet{
+    var titlesVideoset:[String] = []
+}
+
+struct PreviewImagesVideoSet{
+    var previewImagesVideos:[UIImage] = []
+}
 
 class TableViewController: UITableViewController{
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        Service.grabData(tableView: tableView)
+        Service.grabData(tableView: tableView){
+            print("Grabed Data for playlists")
+        }
+        Service.grabTitleAndVideos(tableView: tableView) {
+            print("Title and Video have got")
+        }
+        Service.grabMediaContent(tableView: tableView) {
+            print("Media have got")
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 10.0, execute: {
+            self.tableView.reloadData()
+        })
     }
-
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -31,7 +47,7 @@ class TableViewController: UITableViewController{
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "idcell", for: indexPath) as! TableViewCell
-        print(Service.shared.labels[indexPath.row])
+        print("Table view cell = \(Service.shared.labels[indexPath.row])")
         cell.currentIndexPath = indexPath
         cell.mytitle.text = Service.shared.labels[indexPath.row]
         cell.selectionStyle = .none

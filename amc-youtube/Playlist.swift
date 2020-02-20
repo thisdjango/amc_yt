@@ -6,7 +6,7 @@
 import Foundation
 
 // MARK: - Playlist
-class Playlist: Codable {
+struct Playlist: Codable {
     let kind, etag: String
     let pageInfo: PageInfo
     let items: [Item]
@@ -20,17 +20,10 @@ class Playlist: Codable {
 }
 
 // MARK: - Item
-class Item: Codable {
+struct Item: Codable {
     let kind: Kind
     let etag, id: String
     let snippet: Snippet
-
-    init(kind: Kind, etag: String, id: String, snippet: Snippet) {
-        self.kind = kind
-        self.etag = etag
-        self.id = id
-        self.snippet = snippet
-    }
 }
 
 enum Kind: String, Codable {
@@ -38,7 +31,7 @@ enum Kind: String, Codable {
 }
 
 // MARK: - Snippet
-class Snippet: Codable {
+struct Snippet: Codable {
     let publishedAt: String
     let channelID: ChannelID
     let title, snippetDescription: String
@@ -53,16 +46,6 @@ class Snippet: Codable {
         case snippetDescription = "description"
         case thumbnails, channelTitle, localized
     }
-
-    init(publishedAt: String, channelID: ChannelID, title: String, snippetDescription: String, thumbnails: Thumbnails, channelTitle: ChannelTitle, localized: Localized) {
-        self.publishedAt = publishedAt
-        self.channelID = channelID
-        self.title = title
-        self.snippetDescription = snippetDescription
-        self.thumbnails = thumbnails
-        self.channelTitle = channelTitle
-        self.localized = localized
-    }
 }
 
 enum ChannelID: String, Codable {
@@ -74,7 +57,7 @@ enum ChannelTitle: String, Codable {
 }
 
 // MARK: - Localized
-class Localized: Codable {
+struct Localized: Codable {
     let title, localizedDescription: String
 
     enum CodingKeys: String, CodingKey {
@@ -82,28 +65,16 @@ class Localized: Codable {
         case localizedDescription = "description"
     }
 
-    init(title: String, localizedDescription: String) {
-        self.title = title
-        self.localizedDescription = localizedDescription
-    }
 }
 
 // MARK: - Thumbnails
-class Thumbnails: Codable {
+struct Thumbnails: Codable {
     let thumbnailsDefault, medium, high: Default
     let standard, maxres: Default?
 
     enum CodingKeys: String, CodingKey {
         case thumbnailsDefault = "default"
         case medium, high, standard, maxres
-    }
-
-    init(thumbnailsDefault: Default, medium: Default, high: Default, standard: Default?, maxres: Default?) {
-        self.thumbnailsDefault = thumbnailsDefault
-        self.medium = medium
-        self.high = high
-        self.standard = standard
-        self.maxres = maxres
     }
 }
 
@@ -112,19 +83,10 @@ class Default: Codable {
     let url: String
     let width, height: Int
 
-    init(url: String, width: Int, height: Int) {
-        self.url = url
-        self.width = width
-        self.height = height
-    }
+
 }
 
 // MARK: - PageInfo
-class PageInfo: Codable {
+struct PageInfo: Codable {
     let totalResults, resultsPerPage: Int
-
-    init(totalResults: Int, resultsPerPage: Int) {
-        self.totalResults = totalResults
-        self.resultsPerPage = resultsPerPage
-    }
 }
