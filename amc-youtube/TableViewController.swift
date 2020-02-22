@@ -14,16 +14,13 @@ class TableViewController: UITableViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        Service.grabData(tableView: tableView){
+        Service.grabData(){
             print("Grabed Data for playlists")
             print(Service.shared.playlistsData.count)
+            Service.grabTitleAndVideos()
         }
-        Service.grabTitleAndVideos(tableView: tableView) {
-            print("Title and Video have got")
-        }
-        Service.grabMediaContent(tableView: tableView) {
-            print("Media have got")
-        }
+        sleep(5)
+        tableView.reloadData()
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {

@@ -14,7 +14,7 @@ class TableViewCell: UITableViewCell, UICollectionViewDataSource, UICollectionVi
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var mytitle: UILabel!
 
-    var currentIndexPath: IndexPath = []
+    var currentIndexPath: IndexPath = IndexPath()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -28,9 +28,10 @@ class TableViewCell: UITableViewCell, UICollectionViewDataSource, UICollectionVi
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let myCell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionCell", for: indexPath as IndexPath) as! CollectionViewCell
+        print(currentIndexPath.row, indexPath.row)
         myCell.myimage.image = Service.shared.previewImages[currentIndexPath.row].previewImagesVideos[indexPath.row]
         myCell.mylabel.text = Service.shared.titlesVideo[currentIndexPath.row].titlesVideoset[indexPath.row]
-        print("Collection View Cell (cellForItemAt) = \(myCell.mylabel.text)")
+        print("Collection View Cell (cellForItemAt) = \(String(describing: myCell.mylabel.text))")
         return myCell
     }
 }

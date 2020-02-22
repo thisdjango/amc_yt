@@ -24,16 +24,16 @@ class Service {
 
     let TOKEN = "AIzaSyDvlb82XRQVe0Kyl_olqWyJ1SwddGl_ImQ"
     let CHANNEL_ID = "UCLtPOhNcK2_oSeJl43y-qWw"
+    var done: Bool = false
+    var playlistsData: [Item] = []
+    var tmp_titles: [String] = []
+    var tmp_imgs: [UIImage] = []
+    var labels: [String] = []
+    var previewImages: [PreviewImagesVideoSet] = []
+    var titlesVideo: [TitleVideoSet] = []
+    var videos: [Videos] = []
     
-    var playlistsData:[Item] = []
-    var tmp_titles:[String] = []
-    var tmp_imgs:[UIImage] = []
-    var labels:[String] = []
-    var previewImages:[PreviewImagesVideoSet] = []
-    var titlesVideo:[TitleVideoSet] = []
-    var videos:[Videos] = []
-    
-    static func grabData(tableView: UITableView, _ completionHandler: @escaping (()->()) ){
+    static func grabData(_ completionHandler: @escaping (()->()) ){
         
         let PLAYLIST_URL_LINK = "https://www.googleapis.com/youtube/v3/playlists?part=snippet&channelId=UCLtPOhNcK2_oSeJl43y-qWw&maxResults=50&key=AIzaSyDvlb82XRQVe0Kyl_olqWyJ1SwddGl_ImQ"
         
@@ -58,15 +58,12 @@ class Service {
             }
             shared.playlistsData = playlist.items
             completionHandler()
-            DispatchQueue.main.async {
-                tableView.reloadData()
-            }
         }
         task0.resume()
     }
     
-    static func grabTitleAndVideos(tableView: UITableView, _ completionHandler: @escaping (() -> ())){
-
+    static func grabTitleAndVideos(){
+        
         shared.playlistsData.forEach { playlist in
             // Title
             shared.labels.append(playlist.snippet.title)
@@ -93,22 +90,17 @@ class Service {
                     print("Error: can't parse gists")
                     return
                 }
-
                 shared.videos.append(videos1)
-                print("Task for \"\(playlist.snippet.title)\" is ready.in grabTitleAndVideos")
-                if shared.videos.count == shared.playlistsData.count{
-                    DispatchQueue.main.async {
-                        tableView.reloadData()
-                    }
+                print(shared.videos.count, "Task for \"\(playlist.snippet.title)\" is ready.in grabTitleAndVideos")
+                if Service.shared.videos.count == Service.shared.playlistsData.count {
+                    Service.grabMediaContent()
                 }
             }
             task1.resume()
-            
         }
     }
     
-    static func grabMediaContent(tableView: UITableView, _ completionHandler: @escaping (() -> ())){
-
+    static func grabMediaContent(){
         shared.videos.forEach { video_set in
             video_set.items.forEach { one in
                 let urlString = one.snippet.thumbnails.high.url
@@ -124,20 +116,24 @@ class Service {
                         shared.tmp_imgs.append(image)
                         shared.tmp_titles.append(one.snippet.title)
                         // ----
-                        if video_set.items.count == shared.previewImages.count {
-                            DispatchQueue.main.async {
-                                tableView.reloadData()
-                            }
-                        }
                     }
+                    print("Task for \"\(one.snippet.title)\" is ready.in grabMedia")
+                    print(video_set.items[video_set.items.count - 1].snippet.title)
+                    if one.snippet.title == video_set.items[video_set.items.count - 1].snippet.title {
+                        shared.previewImages.append(PreviewImagesVideoSet(previewImagesVideos: shared.tmp_imgs))
+                        shared.titlesVideo.append(TitleVideoSet(titlesVideoset: shared.tmp_titles))
+                        shared.tmp_titles = [] as [String]
+                        shared.tmp_imgs = [] as [UIImage]
+                    }
+//                    if Service.shared.previewImages.count == Service.shared.titlesVideo.count{
+//                        DispatchQueue.main.async {
+//                            tableView.reloadData()
+//                        }
+//                    }
                 }
                 task.resume()
-                completionHandler()
             }
-            shared.previewImages.append(PreviewImagesVideoSet(previewImagesVideos: shared.tmp_imgs))
-            shared.titlesVideo.append(TitleVideoSet(titlesVideoset: shared.tmp_titles))
-            shared.tmp_titles = [] as [String]
-            shared.tmp_imgs = [] as [UIImage]
+
         }
     }
 }
