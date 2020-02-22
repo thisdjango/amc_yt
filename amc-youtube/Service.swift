@@ -9,6 +9,15 @@
 import UIKit
 
 
+struct TitleVideoSet{
+    var titlesVideoset:[String] = []
+}
+
+struct PreviewImagesVideoSet{
+    var previewImagesVideos:[UIImage] = []
+}
+
+
 class Service {
     
     static let shared = Service()
@@ -59,9 +68,12 @@ class Service {
     static func grabTitleAndVideos(tableView: UITableView, _ completionHandler: @escaping (() -> ())){
 
         shared.playlistsData.forEach { playlist in
-            
+            // Title
             shared.labels.append(playlist.snippet.title)
+            
+            //Videos
             let VIDEOS_URL_LINK = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=\(playlist.id)&key=AIzaSyDvlb82XRQVe0Kyl_olqWyJ1SwddGl_ImQ"
+            
             guard let url = URL(string: VIDEOS_URL_LINK) else {
                 print("getVideos unlucky")
                 return
@@ -83,13 +95,15 @@ class Service {
                 }
 
                 shared.videos.append(videos1)
-                completionHandler()
                 print("Task for \"\(playlist.snippet.title)\" is ready.in grabTitleAndVideos")
-                DispatchQueue.main.async {
-                    tableView.reloadData()
+                if shared.videos.count == shared.playlistsData.count{
+                    DispatchQueue.main.async {
+                        tableView.reloadData()
+                    }
                 }
             }
             task1.resume()
+            
         }
     }
     
@@ -109,19 +123,21 @@ class Service {
                     if let image = UIImage(data: data) {
                         shared.tmp_imgs.append(image)
                         shared.tmp_titles.append(one.snippet.title)
-                        shared.previewImages.append(PreviewImagesVideoSet(previewImagesVideos: shared.tmp_imgs))
-                        shared.titlesVideo.append(TitleVideoSet(titlesVideoset: shared.tmp_titles))
-                        shared.tmp_titles = [] as [String]
-                        shared.tmp_imgs = [] as [UIImage]
                         // ----
-                        completionHandler()
-                        DispatchQueue.main.async {
-                            tableView.reloadData()
+                        if video_set.items.count == shared.previewImages.count {
+                            DispatchQueue.main.async {
+                                tableView.reloadData()
+                            }
                         }
                     }
                 }
                 task.resume()
+                completionHandler()
             }
+            shared.previewImages.append(PreviewImagesVideoSet(previewImagesVideos: shared.tmp_imgs))
+            shared.titlesVideo.append(TitleVideoSet(titlesVideoset: shared.tmp_titles))
+            shared.tmp_titles = [] as [String]
+            shared.tmp_imgs = [] as [UIImage]
         }
     }
 }

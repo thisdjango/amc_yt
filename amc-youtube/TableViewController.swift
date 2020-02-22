@@ -9,14 +9,6 @@
 import UIKit
 //import ListPlaceholder
 
-struct TitleVideoSet{
-    var titlesVideoset:[String] = []
-}
-
-struct PreviewImagesVideoSet{
-    var previewImagesVideos:[UIImage] = []
-}
-
 class TableViewController: UITableViewController{
     
     
@@ -24,6 +16,7 @@ class TableViewController: UITableViewController{
         super.viewDidLoad()
         Service.grabData(tableView: tableView){
             print("Grabed Data for playlists")
+            print(Service.shared.playlistsData.count)
         }
         Service.grabTitleAndVideos(tableView: tableView) {
             print("Title and Video have got")
@@ -31,9 +24,6 @@ class TableViewController: UITableViewController{
         Service.grabMediaContent(tableView: tableView) {
             print("Media have got")
         }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 10.0, execute: {
-            self.tableView.reloadData()
-        })
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -41,7 +31,7 @@ class TableViewController: UITableViewController{
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return Service.shared.labels.count
+        return Service.shared.playlistsData.count
     }
 
 

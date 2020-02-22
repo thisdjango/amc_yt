@@ -79,7 +79,7 @@ struct Thumbnails: Codable {
 }
 
 // MARK: - Default
-class Default: Codable {
+struct Default: Codable {
     let url: String
     let width, height: Int
 
