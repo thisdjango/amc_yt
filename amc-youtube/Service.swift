@@ -8,42 +8,36 @@
 
 import UIKit
 
-
-struct TitleVideoSet{
-    var titlesVideoset:[String] = []
-}
-
-struct PreviewImagesVideoSet{
-    var previewImagesVideos:[UIImage] = []
-}
-
-
 class Service {
     
     static let shared = Service()
 
-    let TOKEN = "AIzaSyDvlb82XRQVe0Kyl_olqWyJ1SwddGl_ImQ"
-    let CHANNEL_ID = "UCLtPOhNcK2_oSeJl43y-qWw"
-    var done: Bool = false
-    var playlistsData: [Item] = []
-    var tmp_titles: [String] = []
-    var tmp_imgs: [UIImage] = []
-    var labels: [String] = []
-    var previewImages: [PreviewImagesVideoSet] = []
-    var titlesVideo: [TitleVideoSet] = []
-    var videos: [Videos] = []
+    private let TOKEN = "AIzaSyDvlb82XRQVe0Kyl_olqWyJ1SwddGl_ImQ"
+    private let CHANNELID = "UCLtPOhNcK2_oSeJl43y-qWw"
     
-    static func grabData(_ completionHandler: @escaping (()->()) ){
+    var playlistsData: [Item] = []
+    var labels: [String] = []
+    var videos: [Videos] = []
+    var localImages: [UIImage] = []
+    var localTitles: [String] = []
+    var videosTitles: [[String]] = []
+    var videosImages: [[UIImage]] = []
+    
+    private init() {}
+    
+    func grabPlaylistsData(completionHandler: @escaping (_ playlists: [Item]?) -> ()) {
         
-        let PLAYLIST_URL_LINK = "https://www.googleapis.com/youtube/v3/playlists?part=snippet&channelId=UCLtPOhNcK2_oSeJl43y-qWw&maxResults=50&key=AIzaSyDvlb82XRQVe0Kyl_olqWyJ1SwddGl_ImQ"
+        let PLAYLIST_URL_LINK = "https://www.googleapis.com/youtube/v3/playlists?part=snippet&channelId=\(CHANNELID)&maxResults=50&key=\(TOKEN)"
         
         guard let url = URL(string: PLAYLIST_URL_LINK) else {
             print("unlucky :(")
+            completionHandler(nil)
             return
         }
+        
         let request = URLRequest(url: url)
         print("in loadContent")
-        let task0 = URLSession.shared.dataTask(with: request) { (data, response, error) in
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             
             guard error == nil else {
                 print(error?.localizedDescription ?? "no description for error provided!\n")
@@ -56,84 +50,86 @@ class Service {
                 print("Error: can't parse gists")
                 return
             }
-            shared.playlistsData = playlist.items
-            completionHandler()
+            // saving playlists to array
+            self.playlistsData = playlist.items
+            completionHandler(playlist.items)
         }
-        task0.resume()
+        
+        task.resume()
     }
     
-    static func grabTitleAndVideos(){
+    func grabTitleAndVideos(for playlist: Item, completionHandler: @escaping (_ videos: Videos?) -> ()) {
+            
+        //Videos
+        let VIDEOS_URL_LINK = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=\(playlist.id)&key=AIzaSyDvlb82XRQVe0Kyl_olqWyJ1SwddGl_ImQ"
         
-        shared.playlistsData.forEach { playlist in
-            // Title
-            shared.labels.append(playlist.snippet.title)
+        guard let url = URL(string: VIDEOS_URL_LINK) else {
+            print("getVideos unlucky")
+            completionHandler(nil)
+            return
+        }
             
-            //Videos
-            let VIDEOS_URL_LINK = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=\(playlist.id)&key=AIzaSyDvlb82XRQVe0Kyl_olqWyJ1SwddGl_ImQ"
-            
-            guard let url = URL(string: VIDEOS_URL_LINK) else {
-                print("getVideos unlucky")
+        let request = URLRequest(url: url)
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+                
+            guard error == nil else {
+                print(error?.localizedDescription ?? "no description for error provided!\n")
+                completionHandler(nil)
+                return
+            }
+                
+            guard let data = data else {
+                completionHandler(nil)
+                return
+            }
+                
+            guard let videos = try? JSONDecoder().decode(Videos.self, from: data) else {
+                print("Error: can't parse videos.")
+                completionHandler(nil)
                 return
             }
             
-            let request = URLRequest(url: url)
-            let task1 = URLSession.shared.dataTask(with: request) { (data, response, error) in
-                
-                guard error == nil else {
-                    print(error?.localizedDescription ?? "no description for error provided!\n")
-                    return
-                }
-                
-                guard let data = data else { return }
-                
-                guard let videos1 = try? JSONDecoder().decode(Videos.self, from: data) else {
-                    print("Error: can't parse gists")
-                    return
-                }
-                shared.videos.append(videos1)
-                print(shared.videos.count, "Task for \"\(playlist.snippet.title)\" is ready.in grabTitleAndVideos")
-                if Service.shared.videos.count == Service.shared.playlistsData.count {
-                    Service.grabMediaContent()
-                }
-            }
-            task1.resume()
+            self.videos.append(videos)
+            
+            // Grab Title
+            self.labels.append(playlist.snippet.title)
+            
+            // Расскоментируй ниже, что бы посмотреть как работает загрузка данных
+            //print(self.videos.count, "Task for \"\(playlist.snippet.title)\" is ready. Videos \(videos.items.count)")
+            completionHandler(videos)
         }
+        
+        task.resume()
     }
     
-    static func grabMediaContent(){
-        shared.videos.forEach { video_set in
-            video_set.items.forEach { one in
-                let urlString = one.snippet.thumbnails.high.url
-                guard let url = URL(string: urlString) else { return }
-                let request = URLRequest(url: url)
-                let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-                    guard error == nil else {
-                        print(error?.localizedDescription ?? "no description for error provided!\n")
-                        return
-                    }
-                    guard let data = data else { return }
-                    if let image = UIImage(data: data) {
-                        shared.tmp_imgs.append(image)
-                        shared.tmp_titles.append(one.snippet.title)
-                        // ----
-                    }
-                    print("Task for \"\(one.snippet.title)\" is ready.in grabMedia")
-                    print(video_set.items[video_set.items.count - 1].snippet.title)
-                    if one.snippet.title == video_set.items[video_set.items.count - 1].snippet.title {
-                        shared.previewImages.append(PreviewImagesVideoSet(previewImagesVideos: shared.tmp_imgs))
-                        shared.titlesVideo.append(TitleVideoSet(titlesVideoset: shared.tmp_titles))
-                        shared.tmp_titles = [] as [String]
-                        shared.tmp_imgs = [] as [UIImage]
-                    }
-//                    if Service.shared.previewImages.count == Service.shared.titlesVideo.count{
-//                        DispatchQueue.main.async {
-//                            tableView.reloadData()
-//                        }
-//                    }
-                }
-                task.resume()
+    func grabMediaContent(for videos: Videos, completionHandler: @escaping (_ success: Bool) -> ()) {
+        
+        for video in videos.items {
+            let urlString = video.snippet.thumbnails.high.url
+            
+            guard let url = URL(string: urlString) else {
+                continue
             }
+            
+            DispatchQueue.global(qos: .userInteractive).sync {
+                guard let data = try? Data(contentsOf: url) else {
+                    // TODO: кейс, когда картинка не досталась -> делать по дефолту
+                    return
+                }
 
+                if let image = UIImage(data: data) {
+                    self.localImages.append(image)
+                    self.localTitles.append(video.snippet.title)
+                    // Расскоментируй ниже, что бы посмотреть как работает загрузка данных
+                    //print("Task for \"\(video.snippet.title)\" is ready.")
+                }
+            }
         }
+        
+        videosImages.append(localImages)
+        videosTitles.append(localTitles)
+        localImages.removeAll()
+        localTitles.removeAll()
+        completionHandler(true)
     }
 }

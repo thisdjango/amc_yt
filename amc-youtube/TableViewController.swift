@@ -11,18 +11,16 @@ import UIKit
 
 class TableViewController: UITableViewController{
     
+    let myGroup = DispatchGroup()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        Service.grabData(){
-            print("Grabed Data for playlists")
-            print(Service.shared.playlistsData.count)
-            Service.grabTitleAndVideos()
+        loadData()
+        myGroup.notify(queue: .main) {
+            self.tableView.reloadData()
         }
-        sleep(5)
-        tableView.reloadData()
     }
-    
+
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -34,14 +32,35 @@ class TableViewController: UITableViewController{
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "idcell", for: indexPath) as! TableViewCell
-        print("Table view cell = \(Service.shared.labels[indexPath.row])")
         cell.currentIndexPath = indexPath
         cell.mytitle.text = Service.shared.labels[indexPath.row]
         cell.selectionStyle = .none
+        print("\nСоздалась Table view cell \(indexPath.row) with name \(Service.shared.labels[indexPath.row])")
+        cell.reloadCollectionView()
         return cell
     }
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 230
+    }
+    
+    func loadData() {
+        myGroup.enter()
+        Service.shared.grabPlaylistsData { (playlists) in
+            guard let playlists = playlists else { return }
+            
+            for playlist in playlists {
+                Service.shared.grabTitleAndVideos(for: playlist) { (videos) in
+                    guard let videos = videos else { return }
+                    
+                    Service.shared.grabMediaContent(for: videos) { (success) in
+                        
+                        if success && Service.shared.videosImages.count == Service.shared.playlistsData.count {
+                            self.myGroup.leave()
+                        }
+                    }
+                }
+            }
+        }
     }
     
     /*
