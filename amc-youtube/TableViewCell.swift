@@ -8,8 +8,13 @@
 
 import UIKit
 
+protocol TableViewDelegate{
+    func didSendInfo(_ titleV: String, for video_id: String)
+}
 
 class TableViewCell: UITableViewCell, UICollectionViewDataSource, UICollectionViewDelegate {
+    
+    var tableViewlDelegate: TableViewDelegate?
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var mytitle: UILabel!
@@ -19,7 +24,6 @@ class TableViewCell: UITableViewCell, UICollectionViewDataSource, UICollectionVi
     override func awakeFromNib() {
         super.awakeFromNib()
         setCollectionViewDataSourceDelegate(self)
-        
     }
     
     func reloadCollectionView() {
@@ -27,7 +31,6 @@ class TableViewCell: UITableViewCell, UICollectionViewDataSource, UICollectionVi
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print("number of items in section: \(Service.shared.videosImages[currentIndexPath.row].count)")
         return Service.shared.videosImages[currentIndexPath.row].count
     }
 
@@ -35,13 +38,17 @@ class TableViewCell: UITableViewCell, UICollectionViewDataSource, UICollectionVi
         let myCell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionCell", for: indexPath as IndexPath) as! CollectionViewCell
         myCell.myimage.image = Service.shared.videosImages[currentIndexPath.row][indexPath.row]
         myCell.mylabel.text = Service.shared.videosTitles[currentIndexPath.row][indexPath.row]
-        print("Создалась Collection view cell \(indexPath.row) with name \(Service.shared.videosTitles[currentIndexPath.row][indexPath.row])")
-    
+        
         return myCell
+    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let titlev = Service.shared.videosTitles[currentIndexPath.row][indexPath.row]
+        let id = Service.shared.videosId[currentIndexPath.row][indexPath.row]
+        tableViewlDelegate?.didSendInfo(titlev, for: id)
     }
 }
 
-extension TableViewCell{
+extension TableViewCell {
     func setCollectionViewDataSourceDelegate
         <D: UICollectionViewDelegate & UICollectionViewDataSource>
         (_ dataSourceDelegate: D)

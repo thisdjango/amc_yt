@@ -18,6 +18,8 @@
 		572C038923E02F9E00B950FE /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572C038823E02F9E00B950FE /* TableViewController.swift */; };
 		572C039423E19BCF00B950FE /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572C039223E19BCF00B950FE /* CollectionViewCell.swift */; };
 		572C039823E19E6700B950FE /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572C039623E19E6700B950FE /* TableViewCell.swift */; };
+		57692A24240C60C200A7746E /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57692A23240C60C200A7746E /* VideoViewController.swift */; };
+		B9C7BEAE6F234807FBD6B80A /* Pods_amc_youtube.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECC9D6029C763EAAC86444A4 /* Pods_amc_youtube.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,10 @@
 		572C038823E02F9E00B950FE /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		572C039223E19BCF00B950FE /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		572C039623E19E6700B950FE /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		57692A23240C60C200A7746E /* VideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
+		67619BC491E737A61EF35F2A /* Pods-amc-youtube.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-amc-youtube.debug.xcconfig"; path = "Target Support Files/Pods-amc-youtube/Pods-amc-youtube.debug.xcconfig"; sourceTree = "<group>"; };
+		CA9679E80776CE7313E4187E /* Pods-amc-youtube.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-amc-youtube.release.xcconfig"; path = "Target Support Files/Pods-amc-youtube/Pods-amc-youtube.release.xcconfig"; sourceTree = "<group>"; };
+		ECC9D6029C763EAAC86444A4 /* Pods_amc_youtube.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_amc_youtube.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +47,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B9C7BEAE6F234807FBD6B80A /* Pods_amc_youtube.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -50,6 +57,8 @@
 		3C14F4E5E8D1AA505BD20F6C /* Pods */ = {
 			isa = PBXGroup;
 			children = (
+				67619BC491E737A61EF35F2A /* Pods-amc-youtube.debug.xcconfig */,
+				CA9679E80776CE7313E4187E /* Pods-amc-youtube.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -60,6 +69,7 @@
 				572C037323E0291600B950FE /* amc-youtube */,
 				572C037223E0291600B950FE /* Products */,
 				3C14F4E5E8D1AA505BD20F6C /* Pods */,
+				8B5E9C7820FA6462050D45FC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -78,16 +88,25 @@
 				5719BD3823F11E29001800F5 /* Videos.swift */,
 				572C038823E02F9E00B950FE /* TableViewController.swift */,
 				572C039623E19E6700B950FE /* TableViewCell.swift */,
+				572C039223E19BCF00B950FE /* CollectionViewCell.swift */,
+				57692A23240C60C200A7746E /* VideoViewController.swift */,
 				5724D0F623F663660094DED4 /* Service.swift */,
 				572C037423E0291600B950FE /* AppDelegate.swift */,
 				572C037623E0291600B950FE /* SceneDelegate.swift */,
 				572C037A23E0291600B950FE /* Main.storyboard */,
-				572C039223E19BCF00B950FE /* CollectionViewCell.swift */,
 				572C037D23E0291C00B950FE /* Assets.xcassets */,
 				572C037F23E0291C00B950FE /* LaunchScreen.storyboard */,
 				572C038223E0291C00B950FE /* Info.plist */,
 			);
 			path = "amc-youtube";
+			sourceTree = "<group>";
+		};
+		8B5E9C7820FA6462050D45FC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				ECC9D6029C763EAAC86444A4 /* Pods_amc_youtube.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -97,9 +116,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 572C038523E0291C00B950FE /* Build configuration list for PBXNativeTarget "amc-youtube" */;
 			buildPhases = (
+				B9D870785B07B4F6C3453391 /* [CP] Check Pods Manifest.lock */,
 				572C036D23E0291600B950FE /* Sources */,
 				572C036E23E0291600B950FE /* Frameworks */,
 				572C036F23E0291600B950FE /* Resources */,
+				3166E4497BD2F9121129E2FE /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -156,6 +177,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		3166E4497BD2F9121129E2FE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-amc-youtube/Pods-amc-youtube-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-amc-youtube/Pods-amc-youtube-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-amc-youtube/Pods-amc-youtube-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B9D870785B07B4F6C3453391 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-amc-youtube-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		572C036D23E0291600B950FE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -163,6 +226,7 @@
 			files = (
 				572C039823E19E6700B950FE /* TableViewCell.swift in Sources */,
 				5719BD3923F11E29001800F5 /* Videos.swift in Sources */,
+				57692A24240C60C200A7746E /* VideoViewController.swift in Sources */,
 				572C039423E19BCF00B950FE /* CollectionViewCell.swift in Sources */,
 				5719BD3723F02197001800F5 /* Playlist.swift in Sources */,
 				572C037523E0291600B950FE /* AppDelegate.swift in Sources */,
@@ -310,6 +374,7 @@
 		};
 		572C038623E0291C00B950FE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 67619BC491E737A61EF35F2A /* Pods-amc-youtube.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -328,6 +393,7 @@
 		};
 		572C038723E0291C00B950FE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CA9679E80776CE7313E4187E /* Pods-amc-youtube.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

@@ -7,11 +7,14 @@
 //
 
 import UIKit
-//import ListPlaceholder
+
+
 
 class TableViewController: UITableViewController{
     
     let myGroup = DispatchGroup()
+    var sendTitleVideo = String()
+    var sendIdVideo = String()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,18 +32,24 @@ class TableViewController: UITableViewController{
         return Service.shared.playlistsData.count
     }
 
-
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "idcell", for: indexPath) as! TableViewCell
         cell.currentIndexPath = indexPath
         cell.mytitle.text = Service.shared.labels[indexPath.row]
         cell.selectionStyle = .none
-        print("\nСоздалась Table view cell \(indexPath.row) with name \(Service.shared.labels[indexPath.row])")
+        cell.tableViewlDelegate = self
         cell.reloadCollectionView()
         return cell
     }
+    
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 230
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let nextVC = segue.destination as! VideoViewController
+        nextVC.titleVideo = sendTitleVideo
+        nextVC.idVideo = sendIdVideo
     }
     
     func loadData() {
@@ -62,6 +71,14 @@ class TableViewController: UITableViewController{
             }
         }
     }
+}
+extension TableViewController: TableViewDelegate{
+    func didSendInfo(_ titleV: String, for video_id: String) {
+        sendTitleVideo = titleV
+        sendIdVideo = video_id
+    }
+}
+
     
     /*
     // Override to support conditional editing of the table view.
@@ -108,5 +125,3 @@ class TableViewController: UITableViewController{
     }
     */
 
-
-}

@@ -20,6 +20,8 @@ class CollectionViewCell: UICollectionViewCell {
         // Initialization code
         myimage.image = image
         mylabel.text = descr
+        myimage.clipsToBounds = true
+        myimage.layer.cornerRadius = myimage.frame.size.width/20
     }
     
 

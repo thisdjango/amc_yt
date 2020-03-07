@@ -12,14 +12,16 @@ class Service {
     
     static let shared = Service()
 
-    private let TOKEN = "AIzaSyDvlb82XRQVe0Kyl_olqWyJ1SwddGl_ImQ"
+    private let TOKEN = "AIzaSyBoD-NYxTpd4wFlXIghFhItyoaY4ZwnM9M"
     private let CHANNELID = "UCLtPOhNcK2_oSeJl43y-qWw"
     
     var playlistsData: [Item] = []
     var labels: [String] = []
     var videos: [Videos] = []
+    var localId: [String] = []
     var localImages: [UIImage] = []
     var localTitles: [String] = []
+    var videosId: [[String]] = []
     var videosTitles: [[String]] = []
     var videosImages: [[UIImage]] = []
     
@@ -28,6 +30,7 @@ class Service {
     func grabPlaylistsData(completionHandler: @escaping (_ playlists: [Item]?) -> ()) {
         
         let PLAYLIST_URL_LINK = "https://www.googleapis.com/youtube/v3/playlists?part=snippet&channelId=\(CHANNELID)&maxResults=50&key=\(TOKEN)"
+        print(PLAYLIST_URL_LINK)
         
         guard let url = URL(string: PLAYLIST_URL_LINK) else {
             print("unlucky :(")
@@ -36,7 +39,6 @@ class Service {
         }
         
         let request = URLRequest(url: url)
-        print("in loadContent")
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             
             guard error == nil else {
@@ -61,7 +63,8 @@ class Service {
     func grabTitleAndVideos(for playlist: Item, completionHandler: @escaping (_ videos: Videos?) -> ()) {
             
         //Videos
-        let VIDEOS_URL_LINK = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=\(playlist.id)&key=AIzaSyDvlb82XRQVe0Kyl_olqWyJ1SwddGl_ImQ"
+        let VIDEOS_URL_LINK = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=\(playlist.id)&key=\(TOKEN)"
+        print(VIDEOS_URL_LINK)
         
         guard let url = URL(string: VIDEOS_URL_LINK) else {
             print("getVideos unlucky")
@@ -82,7 +85,7 @@ class Service {
                 completionHandler(nil)
                 return
             }
-                
+            
             guard let videos = try? JSONDecoder().decode(Videos.self, from: data) else {
                 print("Error: can't parse videos.")
                 completionHandler(nil)
@@ -112,22 +115,19 @@ class Service {
             }
             
             DispatchQueue.global(qos: .userInteractive).sync {
-                guard let data = try? Data(contentsOf: url) else {
-                    // TODO: кейс, когда картинка не досталась -> делать по дефолту
-                    return
+                var soLocalImage = UIImage(named: "image-placeholder")!
+                if let data = try? Data(contentsOf: url){
+                    if let image = UIImage(data: data){ soLocalImage = image }
                 }
-
-                if let image = UIImage(data: data) {
-                    self.localImages.append(image)
-                    self.localTitles.append(video.snippet.title)
-                    // Расскоментируй ниже, что бы посмотреть как работает загрузка данных
-                    //print("Task for \"\(video.snippet.title)\" is ready.")
-                }
+                self.localId.append(video.id)
+                self.localImages.append(soLocalImage)
+                self.localTitles.append(video.snippet.title)
             }
         }
-        
+        videosId.append(localId)
         videosImages.append(localImages)
         videosTitles.append(localTitles)
+        localId.removeAll()
         localImages.removeAll()
         localTitles.removeAll()
         completionHandler(true)
