@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="oNg-2G-gg9">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="oNg-2G-gg9">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -70,7 +70,6 @@
                                                     <connections>
                                                         <outlet property="myimage" destination="AQg-pf-F9y" id="cxg-lb-012"/>
                                                         <outlet property="mylabel" destination="C8t-M5-Vev" id="rk7-c2-5oJ"/>
-                                                        <segue destination="yVC-6s-Ssk" kind="presentation" identifier="toVideo" id="0M6-G2-TBP"/>
                                                     </connections>
                                                 </collectionViewCell>
                                             </cells>
@@ -109,6 +108,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="7a8-kc-rfp"/>
+                    <connections>
+                        <segue destination="yVC-6s-Ssk" kind="presentation" identifier="toVideo" id="MwS-VD-EyL"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dn7-Uk-djB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

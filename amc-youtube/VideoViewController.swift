@@ -10,9 +10,10 @@ import UIKit
 import youtube_ios_player_helper
 
 class VideoViewController: UIViewController {
+    
     var titleVideo = String()
     var idVideo = String()
-    
+
     @IBOutlet weak var playerView: YTPlayerView!
     @IBOutlet weak var titleOfVideo: UILabel!
     
