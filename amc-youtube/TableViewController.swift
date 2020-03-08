@@ -8,8 +8,6 @@
 
 import UIKit
 
-
-
 class TableViewController: UITableViewController{
     
     let myGroup = DispatchGroup()
@@ -47,9 +45,11 @@ class TableViewController: UITableViewController{
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let nextVC = segue.destination as! VideoViewController
-        nextVC.titleVideo = sendTitleVideo
-        nextVC.idVideo = sendIdVideo
+        if segue.identifier == "toVideo" {
+            let nextVC = segue.destination as! VideoViewController
+            nextVC.titleVideo = sendTitleVideo
+            nextVC.idVideo = sendIdVideo
+        }
     }
     
     func loadData() {
@@ -76,6 +76,7 @@ extension TableViewController: TableViewDelegate{
     func didSendInfo(_ titleV: String, for video_id: String) {
         sendTitleVideo = titleV
         sendIdVideo = video_id
+        performSegue(withIdentifier: "toVideo", sender: nil)
     }
 }
 
