@@ -26,8 +26,8 @@ class Service {
     
     static let shared = Service()
 
-    private let TOKEN = "AIzaSyBoD-NYxTpd4wFlXIghFhItyoaY4ZwnM9M"
-    private let CHANNELID = "UCLtPOhNcK2_oSeJl43y-qWw"
+    private let TOKEN = CDATA().TOKEN
+    private let CHANNELID = CDATA().CHANNELID
 
     var playlistsData: [Item] = []
     var labels: [String] = []

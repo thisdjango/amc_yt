@@ -23,8 +23,24 @@
 		57DD31612416891800F913AF /* 3.png in Resources */ = {isa = PBXBuildFile; fileRef = 57DD315E2416891800F913AF /* 3.png */; };
 		57DD31622416891800F913AF /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 57DD315F2416891800F913AF /* 1.png */; };
 		57DD31632416891800F913AF /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 57DD31602416891800F913AF /* 2.png */; };
-		B9C7BEAE6F234807FBD6B80A /* Pods_amc_youtube.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECC9D6029C763EAAC86444A4 /* Pods_amc_youtube.framework */; };
+		57DD317A2416D1EF00F913AF /* ConfigureData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DD31792416D1EF00F913AF /* ConfigureData.swift */; };
+		57DD317B2416D37E00F913AF /* Pods_amc_youtube.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECC9D6029C763EAAC86444A4 /* Pods_amc_youtube.framework */; };
+		57DD317C2416D37E00F913AF /* Pods_amc_youtube.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = ECC9D6029C763EAAC86444A4 /* Pods_amc_youtube.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		57DD317D2416D37E00F913AF /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				57DD317C2416D37E00F913AF /* Pods_amc_youtube.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		5719BD3623F02197001800F5 /* Playlist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Playlist.swift; sourceTree = "<group>"; };
@@ -45,6 +61,7 @@
 		57DD315E2416891800F913AF /* 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 3.png; path = ../../../Desktop/3.png; sourceTree = "<group>"; };
 		57DD315F2416891800F913AF /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 1.png; path = ../../../Desktop/1.png; sourceTree = "<group>"; };
 		57DD31602416891800F913AF /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 2.png; path = ../../../Desktop/2.png; sourceTree = "<group>"; };
+		57DD31792416D1EF00F913AF /* ConfigureData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigureData.swift; sourceTree = "<group>"; };
 		67619BC491E737A61EF35F2A /* Pods-amc-youtube.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-amc-youtube.debug.xcconfig"; path = "Target Support Files/Pods-amc-youtube/Pods-amc-youtube.debug.xcconfig"; sourceTree = "<group>"; };
 		CA9679E80776CE7313E4187E /* Pods-amc-youtube.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-amc-youtube.release.xcconfig"; path = "Target Support Files/Pods-amc-youtube/Pods-amc-youtube.release.xcconfig"; sourceTree = "<group>"; };
 		ECC9D6029C763EAAC86444A4 /* Pods_amc_youtube.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_amc_youtube.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -55,7 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B9C7BEAE6F234807FBD6B80A /* Pods_amc_youtube.framework in Frameworks */,
+				57DD317B2416D37E00F913AF /* Pods_amc_youtube.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -101,6 +118,7 @@
 				572C039223E19BCF00B950FE /* CollectionViewCell.swift */,
 				57692A23240C60C200A7746E /* VideoViewController.swift */,
 				5724D0F623F663660094DED4 /* Service.swift */,
+				57DD31792416D1EF00F913AF /* ConfigureData.swift */,
 				572C037423E0291600B950FE /* AppDelegate.swift */,
 				572C037623E0291600B950FE /* SceneDelegate.swift */,
 				572C037A23E0291600B950FE /* Main.storyboard */,
@@ -141,6 +159,7 @@
 				572C036E23E0291600B950FE /* Frameworks */,
 				572C036F23E0291600B950FE /* Resources */,
 				3166E4497BD2F9121129E2FE /* [CP] Embed Pods Frameworks */,
+				57DD317D2416D37E00F913AF /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -250,6 +269,7 @@
 			files = (
 				572C039823E19E6700B950FE /* TableViewCell.swift in Sources */,
 				5719BD3923F11E29001800F5 /* Videos.swift in Sources */,
+				57DD317A2416D1EF00F913AF /* ConfigureData.swift in Sources */,
 				57692A24240C60C200A7746E /* VideoViewController.swift in Sources */,
 				572C039423E19BCF00B950FE /* CollectionViewCell.swift in Sources */,
 				5719BD3723F02197001800F5 /* Playlist.swift in Sources */,
