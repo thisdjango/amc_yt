@@ -13,14 +13,17 @@ class VideoViewController: UIViewController {
     
     var titleVideo = String()
     var idVideo = String()
+    var descVideo = String()
 
     @IBOutlet weak var playerView: YTPlayerView!
     @IBOutlet weak var titleOfVideo: UILabel!
+    @IBOutlet weak var descriptionVideo: UITextView!
     
 
     @IBAction func stop(_ sender: Any) {
         playerView.stopVideo()
     }
+    
     @IBAction func play(_ sender: Any) {
         playerView.playVideo()
     }
@@ -28,7 +31,8 @@ class VideoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         titleOfVideo.text = titleVideo
-        playerView.loadVideo(byId: idVideo, startSeconds: 0, suggestedQuality: YTPlaybackQuality(rawValue: 720)!)
+        descriptionVideo.text = descVideo
+        playerView.load(withVideoId: idVideo)
         print("Params of Video", titleVideo, idVideo)
         // Do any additional setup after loading the view.
     }
