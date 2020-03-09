@@ -19,6 +19,10 @@
 		572C039423E19BCF00B950FE /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572C039223E19BCF00B950FE /* CollectionViewCell.swift */; };
 		572C039823E19E6700B950FE /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572C039623E19E6700B950FE /* TableViewCell.swift */; };
 		57692A24240C60C200A7746E /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57692A23240C60C200A7746E /* VideoViewController.swift */; };
+		57DD315C2416873800F913AF /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 57DD315B2416873800F913AF /* README.md */; };
+		57DD31612416891800F913AF /* 3.png in Resources */ = {isa = PBXBuildFile; fileRef = 57DD315E2416891800F913AF /* 3.png */; };
+		57DD31622416891800F913AF /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 57DD315F2416891800F913AF /* 1.png */; };
+		57DD31632416891800F913AF /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 57DD31602416891800F913AF /* 2.png */; };
 		B9C7BEAE6F234807FBD6B80A /* Pods_amc_youtube.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECC9D6029C763EAAC86444A4 /* Pods_amc_youtube.framework */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +41,10 @@
 		572C039223E19BCF00B950FE /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		572C039623E19E6700B950FE /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		57692A23240C60C200A7746E /* VideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
+		57DD315B2416873800F913AF /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		57DD315E2416891800F913AF /* 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 3.png; path = ../../../Desktop/3.png; sourceTree = "<group>"; };
+		57DD315F2416891800F913AF /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 1.png; path = ../../../Desktop/1.png; sourceTree = "<group>"; };
+		57DD31602416891800F913AF /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 2.png; path = ../../../Desktop/2.png; sourceTree = "<group>"; };
 		67619BC491E737A61EF35F2A /* Pods-amc-youtube.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-amc-youtube.debug.xcconfig"; path = "Target Support Files/Pods-amc-youtube/Pods-amc-youtube.debug.xcconfig"; sourceTree = "<group>"; };
 		CA9679E80776CE7313E4187E /* Pods-amc-youtube.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-amc-youtube.release.xcconfig"; path = "Target Support Files/Pods-amc-youtube/Pods-amc-youtube.release.xcconfig"; sourceTree = "<group>"; };
 		ECC9D6029C763EAAC86444A4 /* Pods_amc_youtube.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_amc_youtube.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -66,6 +74,8 @@
 		572C036823E0291600B950FE = {
 			isa = PBXGroup;
 			children = (
+				57DD315D2416882000F913AF /* screenshots */,
+				57DD315B2416873800F913AF /* README.md */,
 				572C037323E0291600B950FE /* amc-youtube */,
 				572C037223E0291600B950FE /* Products */,
 				3C14F4E5E8D1AA505BD20F6C /* Pods */,
@@ -99,6 +109,16 @@
 				572C038223E0291C00B950FE /* Info.plist */,
 			);
 			path = "amc-youtube";
+			sourceTree = "<group>";
+		};
+		57DD315D2416882000F913AF /* screenshots */ = {
+			isa = PBXGroup;
+			children = (
+				57DD315F2416891800F913AF /* 1.png */,
+				57DD31602416891800F913AF /* 2.png */,
+				57DD315E2416891800F913AF /* 3.png */,
+			);
+			path = screenshots;
 			sourceTree = "<group>";
 		};
 		8B5E9C7820FA6462050D45FC /* Frameworks */ = {
@@ -169,8 +189,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				57DD31612416891800F913AF /* 3.png in Resources */,
 				572C038123E0291C00B950FE /* LaunchScreen.storyboard in Resources */,
+				57DD31632416891800F913AF /* 2.png in Resources */,
 				572C037E23E0291C00B950FE /* Assets.xcassets in Resources */,
+				57DD31622416891800F913AF /* 1.png in Resources */,
+				57DD315C2416873800F913AF /* README.md in Resources */,
 				572C037C23E0291600B950FE /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
