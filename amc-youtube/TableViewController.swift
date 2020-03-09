@@ -13,6 +13,7 @@ class TableViewController: UITableViewController{
     let myGroup = DispatchGroup()
     var sendTitleVideo = String()
     var sendIdVideo = String()
+    var sendDescVideo = String()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,6 +50,7 @@ class TableViewController: UITableViewController{
             let nextVC = segue.destination as! VideoViewController
             nextVC.titleVideo = sendTitleVideo
             nextVC.idVideo = sendIdVideo
+            nextVC.descVideo = sendDescVideo
         }
     }
     
@@ -63,7 +65,7 @@ class TableViewController: UITableViewController{
                     
                     Service.shared.grabMediaContent(for: videos) { (success) in
                         
-                        if success && Service.shared.videosImages.count == Service.shared.playlistsData.count {
+                        if success && Service.shared.videoInfo.images.count == Service.shared.playlistsData.count {
                             self.myGroup.leave()
                         }
                     }
@@ -73,9 +75,10 @@ class TableViewController: UITableViewController{
     }
 }
 extension TableViewController: TableViewDelegate{
-    func didSendInfo(_ titleV: String, for video_id: String) {
+    func didSendInfo(_ titleV: String, for video_id: String, descr: String) {
         sendTitleVideo = titleV
         sendIdVideo = video_id
+        sendDescVideo = descr
         performSegue(withIdentifier: "toVideo", sender: nil)
     }
 }

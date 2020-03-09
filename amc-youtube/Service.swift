@@ -8,22 +8,33 @@
 
 import UIKit
 
+struct VideoInfo {
+    var id: [[String]] = []
+    var titles: [[String]] = []
+    var images: [[UIImage]] = []
+    var description: [[String]] = []
+}
+
+struct Local {
+    var id: [String] = []
+    var images: [UIImage] = []
+    var titles: [String] = []
+    var description: [String] = []
+}
+
 class Service {
     
     static let shared = Service()
 
     private let TOKEN = "AIzaSyBoD-NYxTpd4wFlXIghFhItyoaY4ZwnM9M"
     private let CHANNELID = "UCLtPOhNcK2_oSeJl43y-qWw"
-    
+
     var playlistsData: [Item] = []
     var labels: [String] = []
     var videos: [Videos] = []
-    var localId: [String] = []
-    var localImages: [UIImage] = []
-    var localTitles: [String] = []
-    var videosId: [[String]] = []
-    var videosTitles: [[String]] = []
-    var videosImages: [[UIImage]] = []
+    var videoInfo = VideoInfo()
+    var local = Local()
+
     
     private init() {}
     
@@ -119,17 +130,20 @@ class Service {
                 if let data = try? Data(contentsOf: url){
                     if let image = UIImage(data: data){ soLocalImage = image }
                 }
-                self.localId.append(video.id)
-                self.localImages.append(soLocalImage)
-                self.localTitles.append(video.snippet.title)
+                local.id.append(video.snippet.resourceID.videoID)
+                local.images.append(soLocalImage)
+                local.description.append(video.snippet.snippetDescription)
+                local.titles.append(video.snippet.title)
             }
         }
-        videosId.append(localId)
-        videosImages.append(localImages)
-        videosTitles.append(localTitles)
-        localId.removeAll()
-        localImages.removeAll()
-        localTitles.removeAll()
+        videoInfo.id.append(local.id)
+        videoInfo.images.append(local.images)
+        videoInfo.description.append(local.description)
+        videoInfo.titles.append(local.titles)
+        local.id.removeAll()
+        local.images.removeAll()
+        local.description.removeAll()
+        local.titles.removeAll()
         completionHandler(true)
     }
 }

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="oNg-2G-gg9">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="oNg-2G-gg9">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -125,10 +125,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="1Te-q1-Ip6">
-                                <rect key="frame" x="20" y="424" width="374" height="237"/>
+                                <rect key="frame" x="20" y="424" width="374" height="384"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="237" id="JP2-Gw-dol"/>
+                                    <constraint firstAttribute="height" constant="384" id="JP2-Gw-dol"/>
                                 </constraints>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -145,7 +145,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dlJ-Yu-yA8" customClass="YTPlayerView">
-                                <rect key="frame" x="20" y="40" width="374" height="310"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="350"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ufT-B9-9Yv">
                                         <rect key="frame" x="13" y="272" width="36" height="30"/>
@@ -156,7 +156,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H7Z-6y-BQV">
-                                        <rect key="frame" x="324" y="272" width="39" height="30"/>
+                                        <rect key="frame" x="360" y="272" width="39" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="STOP"/>
                                         <connections>
@@ -169,21 +169,23 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="dlJ-Yu-yA8" firstAttribute="leading" secondItem="1Te-q1-Ip6" secondAttribute="leading" id="GqM-Y8-IBP"/>
                             <constraint firstItem="1Te-q1-Ip6" firstAttribute="top" secondItem="19K-xc-fBT" secondAttribute="bottom" constant="8" id="MHD-Ir-h4n"/>
                             <constraint firstItem="19K-xc-fBT" firstAttribute="top" secondItem="dlJ-Yu-yA8" secondAttribute="bottom" constant="8" id="UXp-LV-BR8"/>
-                            <constraint firstItem="dlJ-Yu-yA8" firstAttribute="top" secondItem="NQz-L8-fTH" secondAttribute="top" constant="40" id="WYA-W2-zI0"/>
+                            <constraint firstItem="dlJ-Yu-yA8" firstAttribute="top" secondItem="NQz-L8-fTH" secondAttribute="top" id="WYA-W2-zI0"/>
                             <constraint firstItem="19K-xc-fBT" firstAttribute="leading" secondItem="NQz-L8-fTH" secondAttribute="leading" constant="20" id="a5E-9y-dJz"/>
                             <constraint firstItem="dlJ-Yu-yA8" firstAttribute="centerX" secondItem="iH2-PV-Edi" secondAttribute="centerX" id="afg-qq-jyX"/>
-                            <constraint firstItem="NQz-L8-fTH" firstAttribute="bottom" secondItem="1Te-q1-Ip6" secondAttribute="bottom" constant="147" id="bvS-AC-z6N"/>
+                            <constraint firstItem="NQz-L8-fTH" firstAttribute="trailing" secondItem="dlJ-Yu-yA8" secondAttribute="trailing" id="b9o-1r-oD2"/>
+                            <constraint firstItem="NQz-L8-fTH" firstAttribute="bottom" secondItem="1Te-q1-Ip6" secondAttribute="bottom" id="bvS-AC-z6N"/>
                             <constraint firstItem="1Te-q1-Ip6" firstAttribute="centerX" secondItem="iH2-PV-Edi" secondAttribute="centerX" id="erC-Ov-RqN"/>
+                            <constraint firstItem="dlJ-Yu-yA8" firstAttribute="leading" secondItem="NQz-L8-fTH" secondAttribute="leading" id="euJ-JV-y7x"/>
                             <constraint firstItem="19K-xc-fBT" firstAttribute="centerX" secondItem="iH2-PV-Edi" secondAttribute="centerX" id="f0Y-dC-aEF"/>
-                            <constraint firstItem="dlJ-Yu-yA8" firstAttribute="leading" secondItem="iH2-PV-Edi" secondAttribute="leadingMargin" id="yig-Ye-plG"/>
+                            <constraint firstItem="1Te-q1-Ip6" firstAttribute="leading" secondItem="NQz-L8-fTH" secondAttribute="leading" constant="20" id="gEM-We-Xyg"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="NQz-L8-fTH"/>
                     </view>
                     <navigationItem key="navigationItem" id="rpD-fV-18N"/>
                     <connections>
+                        <outlet property="descriptionVideo" destination="1Te-q1-Ip6" id="owx-hF-ac3"/>
                         <outlet property="playerView" destination="dlJ-Yu-yA8" id="YKF-QK-OpY"/>
                         <outlet property="titleOfVideo" destination="19K-xc-fBT" id="70d-i1-dyC"/>
                     </connections>
