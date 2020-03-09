@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="oNg-2G-gg9">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="oNg-2G-gg9">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Table View Controller-->
+        <!--American Center in Moscow-->
         <scene sceneID="2ep-gx-rh0">
             <objects>
                 <tableViewController id="32R-3i-fCS" customClass="TableViewController" customModule="amc_youtube" customModuleProvider="target" sceneMemberID="viewController">
@@ -26,7 +26,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="3sN-X0-rxK">
-                                            <rect key="frame" x="0.0" y="49" width="414" height="181"/>
+                                            <rect key="frame" x="20" y="49" width="394" height="181"/>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                             <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="rcG-fc-t5D">
                                                 <size key="itemSize" width="204" height="180"/>
@@ -79,7 +79,7 @@
                                             </connections>
                                         </collectionView>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="1000" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="mytitle" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HDc-HS-9cj">
-                                            <rect key="frame" x="4" y="11" width="414" height="38"/>
+                                            <rect key="frame" x="24" y="11" width="394" height="38"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -89,7 +89,7 @@
                                         <constraint firstAttribute="bottom" secondItem="3sN-X0-rxK" secondAttribute="bottom" id="9yU-aM-pqA"/>
                                         <constraint firstItem="HDc-HS-9cj" firstAttribute="leading" secondItem="3sN-X0-rxK" secondAttribute="leading" constant="4" id="F2w-za-c5S"/>
                                         <constraint firstItem="3sN-X0-rxK" firstAttribute="top" secondItem="mYi-VO-KJu" secondAttribute="top" constant="49" id="FU4-Rp-Y7A"/>
-                                        <constraint firstItem="3sN-X0-rxK" firstAttribute="leading" secondItem="mYi-VO-KJu" secondAttribute="leading" id="LuN-ZT-BVt"/>
+                                        <constraint firstItem="3sN-X0-rxK" firstAttribute="leading" secondItem="mYi-VO-KJu" secondAttribute="leading" constant="20" symbolic="YES" id="LuN-ZT-BVt"/>
                                         <constraint firstItem="3sN-X0-rxK" firstAttribute="top" secondItem="HDc-HS-9cj" secondAttribute="bottom" id="SN5-aB-6af"/>
                                         <constraint firstAttribute="trailing" secondItem="3sN-X0-rxK" secondAttribute="trailing" id="aOc-js-tBi"/>
                                         <constraint firstItem="HDc-HS-9cj" firstAttribute="top" secondItem="mYi-VO-KJu" secondAttribute="topMargin" id="bEk-KS-NnM"/>
@@ -107,7 +107,7 @@
                             <outlet property="delegate" destination="32R-3i-fCS" id="rcN-RU-JHK"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="7a8-kc-rfp"/>
+                    <navigationItem key="navigationItem" title="American Center in Moscow" id="7a8-kc-rfp"/>
                     <connections>
                         <segue destination="yVC-6s-Ssk" kind="presentation" identifier="toVideo" id="MwS-VD-EyL"/>
                     </connections>
