@@ -50,6 +50,7 @@ class TableViewController: UITableViewController{
         let nextVC = segue.destination as! VideoViewController
         nextVC.titleVideo = sendTitleVideo
         nextVC.idVideo = sendIdVideo
+        performSegue(withIdentifier: "toVideo", sender: nil)
     }
     
     func loadData() {
