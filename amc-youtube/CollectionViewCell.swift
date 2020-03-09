@@ -23,5 +23,6 @@ class CollectionViewCell: UICollectionViewCell {
         myimage.clipsToBounds = true
         myimage.layer.cornerRadius = myimage.frame.size.width/20
     }
+    
 
 }

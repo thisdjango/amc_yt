@@ -15,11 +15,10 @@ protocol TableViewDelegate{
 class TableViewCell: UITableViewCell, UICollectionViewDataSource, UICollectionViewDelegate {
     
     var tableViewlDelegate: TableViewDelegate?
+    var currentIndexPath: IndexPath = IndexPath()
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var mytitle: UILabel!
-
-    var currentIndexPath: IndexPath = IndexPath()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -41,6 +40,7 @@ class TableViewCell: UITableViewCell, UICollectionViewDataSource, UICollectionVi
         
         return myCell
     }
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let titlev = Service.shared.videosTitles[currentIndexPath.row][indexPath.row]
         let id = Service.shared.videosId[currentIndexPath.row][indexPath.row]
