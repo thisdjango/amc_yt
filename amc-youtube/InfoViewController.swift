@@ -10,8 +10,13 @@ import UIKit
 
 class InfoViewController: UIViewController {
 
+    @IBOutlet weak var imageLogo: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        if self.traitCollection.userInterfaceStyle == .dark{
+            imageLogo.image = UIImage(named: "logow.png")
+        }
     }
     
     
@@ -38,17 +43,7 @@ class InfoViewController: UIViewController {
         let url = URL(string: sender.titleLabel!.text!)
         UIApplication.shared.open(url!, options: [:], completionHandler: nil)
     }
-    
-    
-    
-    
-    
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
+        
 
     /*
     // MARK: - Navigation
