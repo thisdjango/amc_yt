@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TableViewController: UITableViewController{
+class TableViewController: UITableViewController {
     
     let myGroup = DispatchGroup()
     var sendTitleVideo = String()
@@ -46,7 +46,7 @@ class TableViewController: UITableViewController{
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toVideo" {
+        if segue.identifier == "toVideo"{
             let nextVC = segue.destination as! VideoViewController
             nextVC.titleVideo = sendTitleVideo
             nextVC.idVideo = sendIdVideo

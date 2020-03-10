@@ -107,7 +107,13 @@
                             <outlet property="delegate" destination="32R-3i-fCS" id="rcN-RU-JHK"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="American Center in Moscow" id="7a8-kc-rfp"/>
+                    <navigationItem key="navigationItem" title="American Center in Moscow" id="7a8-kc-rfp">
+                        <barButtonItem key="rightBarButtonItem" image="info.circle" catalog="system" style="plain" id="nvW-VR-qjM">
+                            <connections>
+                                <segue destination="MdW-BM-xcf" kind="show" id="8Mx-Bz-xqY"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <segue destination="yVC-6s-Ssk" kind="presentation" identifier="toVideo" id="MwS-VD-EyL"/>
                     </connections>
@@ -192,7 +198,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fdF-Od-a8b" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-5231.884057971015" y="529.6875"/>
+            <point key="canvasLocation" x="-5300" y="940"/>
         </scene>
         <!--Item-->
         <scene sceneID="1Qm-dN-spb">
@@ -213,8 +219,134 @@
             </objects>
             <point key="canvasLocation" x="-7010.144927536232" y="529.6875"/>
         </scene>
+        <!--Info View Controller-->
+        <scene sceneID="LUb-br-J60">
+            <objects>
+                <viewController id="MdW-BM-xcf" customClass="InfoViewController" customModule="amc_youtube" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="SLr-5t-iup">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="Gz7-pM-1l0">
+                                <rect key="frame" x="40" y="117" width="334" height="109"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="109" id="lp4-Qe-Aut"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1EN-ka-pAM">
+                                <rect key="frame" x="40" y="716" width="334" height="38"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <state key="normal" title="+74957285243"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i7R-PX-JHv">
+                                <rect key="frame" x="40" y="764" width="334" height="38"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <state key="normal" title="+79688177128"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MAR-qG-1j7">
+                                <rect key="frame" x="40" y="812" width="334" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Q4G-wB-4HZ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <state key="normal" title="https://amc.ru/"/>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xK6-A3-PIw">
+                                <rect key="frame" x="40" y="304" width="334" height="329"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="300" id="qSD-94-b9q"/>
+                                </constraints>
+                                <string key="text">Американский Центр, открытый в Москве в 1993 году, является крупнейшей в России площадкой, предоставляющей информацию об американской культуре. Наш Центр, будучи одним из более 700 Американских центров в 150 странах мира, предлагает посетителям широкий спектр культурных и образовательных программ, где в дружелюбной атмосфере вы можете узнать о культуре и истории США.</string>
+                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="20"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Россия, Москва, Новинский Бульвар 21" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QbM-v7-lak">
+                                <rect key="frame" x="40" y="651" width="334" height="55"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="55" id="jK1-6P-jHG"/>
+                                </constraints>
+                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <dataDetectorType key="dataDetectorTypes" address="YES"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rfb-G2-ZHs">
+                                <rect key="frame" x="39.999999999999993" y="246" width="111.33333333333331" height="40"/>
+                                <color key="backgroundColor" red="0.0" green="0.65098039220000004" blue="0.70980392160000005" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="tDb-qd-s50"/>
+                                    <constraint firstAttribute="width" constant="111.33333333333331" id="zPB-uz-Vrx"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <state key="normal" title="Учись">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6WM-W9-dVN">
+                                <rect key="frame" x="151.33333333333334" y="246" width="111.33333333333334" height="40"/>
+                                <color key="backgroundColor" red="0.090196078430000007" green="0.12549019610000001" blue="0.22352941179999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <state key="normal" title="Общайся">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YaD-2h-45O">
+                                <rect key="frame" x="262.66666666666669" y="246" width="111.33333333333331" height="40"/>
+                                <color key="backgroundColor" red="0.86666666670000003" green="0.1450980392" blue="0.23921568630000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <state key="normal" title="Создавай">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="YaD-2h-45O" firstAttribute="width" secondItem="Rfb-G2-ZHs" secondAttribute="width" id="4vG-55-1AO"/>
+                            <constraint firstItem="Rfb-G2-ZHs" firstAttribute="top" secondItem="6WM-W9-dVN" secondAttribute="top" id="6jK-6h-Zk9"/>
+                            <constraint firstItem="1EN-ka-pAM" firstAttribute="top" secondItem="QbM-v7-lak" secondAttribute="bottom" constant="10" id="7GE-B7-hBP"/>
+                            <constraint firstItem="Rfb-G2-ZHs" firstAttribute="baseline" secondItem="6WM-W9-dVN" secondAttribute="firstBaseline" id="Eft-AE-0o7"/>
+                            <constraint firstItem="i7R-PX-JHv" firstAttribute="leading" secondItem="Gz7-pM-1l0" secondAttribute="leading" id="Ft4-Zf-tyW"/>
+                            <constraint firstItem="Rfb-G2-ZHs" firstAttribute="top" secondItem="Gz7-pM-1l0" secondAttribute="bottom" constant="20" id="Gkt-IZ-AIf"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Gz7-pM-1l0" secondAttribute="trailing" constant="20" id="IO9-sa-9tf"/>
+                            <constraint firstItem="i7R-PX-JHv" firstAttribute="centerX" secondItem="SLr-5t-iup" secondAttribute="centerX" id="KYg-QP-NL1"/>
+                            <constraint firstItem="MAR-qG-1j7" firstAttribute="top" secondItem="i7R-PX-JHv" secondAttribute="bottom" constant="10" id="R7M-ba-CPs"/>
+                            <constraint firstItem="6WM-W9-dVN" firstAttribute="top" secondItem="YaD-2h-45O" secondAttribute="top" id="Sf9-sk-2cw"/>
+                            <constraint firstItem="6WM-W9-dVN" firstAttribute="width" secondItem="Rfb-G2-ZHs" secondAttribute="width" id="UK9-C8-2y7"/>
+                            <constraint firstItem="Gz7-pM-1l0" firstAttribute="top" secondItem="Qjl-fa-X4k" secondAttribute="top" constant="29" id="Vov-xR-rPS"/>
+                            <constraint firstItem="1EN-ka-pAM" firstAttribute="centerX" secondItem="SLr-5t-iup" secondAttribute="centerX" id="XhD-hL-CKm"/>
+                            <constraint firstItem="xK6-A3-PIw" firstAttribute="centerX" secondItem="SLr-5t-iup" secondAttribute="centerX" id="YPb-J0-L06"/>
+                            <constraint firstItem="Qjl-fa-X4k" firstAttribute="bottom" secondItem="MAR-qG-1j7" secondAttribute="bottom" constant="20" id="Zmh-RN-6Wu"/>
+                            <constraint firstItem="6WM-W9-dVN" firstAttribute="leading" secondItem="Rfb-G2-ZHs" secondAttribute="trailing" id="a1a-Ni-Pdm"/>
+                            <constraint firstItem="QbM-v7-lak" firstAttribute="centerX" secondItem="SLr-5t-iup" secondAttribute="centerX" id="dum-NG-sdV"/>
+                            <constraint firstItem="6WM-W9-dVN" firstAttribute="baseline" secondItem="YaD-2h-45O" secondAttribute="firstBaseline" id="e5f-7F-Isd"/>
+                            <constraint firstItem="xK6-A3-PIw" firstAttribute="leading" secondItem="Gz7-pM-1l0" secondAttribute="leading" id="fy6-yw-cB3"/>
+                            <constraint firstItem="YaD-2h-45O" firstAttribute="height" secondItem="Rfb-G2-ZHs" secondAttribute="height" id="ghR-Qw-1UJ"/>
+                            <constraint firstItem="i7R-PX-JHv" firstAttribute="top" secondItem="1EN-ka-pAM" secondAttribute="bottom" constant="10" id="hEW-BK-heX"/>
+                            <constraint firstItem="6WM-W9-dVN" firstAttribute="height" secondItem="Rfb-G2-ZHs" secondAttribute="height" id="jtI-i5-Hlf"/>
+                            <constraint firstItem="YaD-2h-45O" firstAttribute="leading" secondItem="6WM-W9-dVN" secondAttribute="trailing" constant="1.1368683772161603e-13" id="r5I-MS-a7e"/>
+                            <constraint firstItem="Gz7-pM-1l0" firstAttribute="centerX" secondItem="SLr-5t-iup" secondAttribute="centerX" id="rc5-YU-FYm"/>
+                            <constraint firstItem="xK6-A3-PIw" firstAttribute="top" secondItem="Rfb-G2-ZHs" secondAttribute="bottom" constant="18" id="rem-uz-aRt"/>
+                            <constraint firstItem="6WM-W9-dVN" firstAttribute="centerX" secondItem="SLr-5t-iup" secondAttribute="centerX" id="uM7-oE-OJF"/>
+                            <constraint firstItem="QbM-v7-lak" firstAttribute="top" secondItem="xK6-A3-PIw" secondAttribute="bottom" constant="18" id="v9y-8H-i9w"/>
+                            <constraint firstItem="1EN-ka-pAM" firstAttribute="leading" secondItem="Gz7-pM-1l0" secondAttribute="leading" id="vKL-JD-k0o"/>
+                            <constraint firstItem="MAR-qG-1j7" firstAttribute="centerX" secondItem="SLr-5t-iup" secondAttribute="centerX" id="wI3-vi-uTA"/>
+                            <constraint firstItem="QbM-v7-lak" firstAttribute="leading" secondItem="Gz7-pM-1l0" secondAttribute="leading" id="wQQ-Vv-YfX"/>
+                            <constraint firstItem="MAR-qG-1j7" firstAttribute="leading" secondItem="Gz7-pM-1l0" secondAttribute="leading" id="z4Q-ib-8DI"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Qjl-fa-X4k"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="xCA-j9-Gfn"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rba-GH-0pf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-5300" y="276"/>
+        </scene>
     </scenes>
     <resources>
         <image name="hare" catalog="system" width="64" height="46"/>
+        <image name="info.circle" catalog="system" width="64" height="60"/>
+        <image name="logo" width="623" height="219"/>
     </resources>
 </document>

@@ -18,6 +18,7 @@
 		572C038923E02F9E00B950FE /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572C038823E02F9E00B950FE /* TableViewController.swift */; };
 		572C039423E19BCF00B950FE /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572C039223E19BCF00B950FE /* CollectionViewCell.swift */; };
 		572C039823E19E6700B950FE /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572C039623E19E6700B950FE /* TableViewCell.swift */; };
+		57545D1324182F5C009FF1CA /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57545D1224182F5C009FF1CA /* InfoViewController.swift */; };
 		57692A24240C60C200A7746E /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57692A23240C60C200A7746E /* VideoViewController.swift */; };
 		57DD315C2416873800F913AF /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 57DD315B2416873800F913AF /* README.md */; };
 		57DD31612416891800F913AF /* 3.png in Resources */ = {isa = PBXBuildFile; fileRef = 57DD315E2416891800F913AF /* 3.png */; };
@@ -56,6 +57,7 @@
 		572C038823E02F9E00B950FE /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		572C039223E19BCF00B950FE /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		572C039623E19E6700B950FE /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		57545D1224182F5C009FF1CA /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		57692A23240C60C200A7746E /* VideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
 		57DD315B2416873800F913AF /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		57DD315E2416891800F913AF /* 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 3.png; path = ../../../Desktop/3.png; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 				572C037D23E0291C00B950FE /* Assets.xcassets */,
 				572C037F23E0291C00B950FE /* LaunchScreen.storyboard */,
 				572C038223E0291C00B950FE /* Info.plist */,
+				57545D1224182F5C009FF1CA /* InfoViewController.swift */,
 			);
 			path = "amc-youtube";
 			sourceTree = "<group>";
@@ -268,6 +271,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				572C039823E19E6700B950FE /* TableViewCell.swift in Sources */,
+				57545D1324182F5C009FF1CA /* InfoViewController.swift in Sources */,
 				5719BD3923F11E29001800F5 /* Videos.swift in Sources */,
 				57DD317A2416D1EF00F913AF /* ConfigureData.swift in Sources */,
 				57692A24240C60C200A7746E /* VideoViewController.swift in Sources */,
@@ -421,6 +425,7 @@
 			baseConfigurationReference = 67619BC491E737A61EF35F2A /* Pods-amc-youtube.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VZVGW647BZ;
 				INFOPLIST_FILE = "amc-youtube/Info.plist";
@@ -430,6 +435,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "unum.amc-youtube";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -440,6 +446,7 @@
 			baseConfigurationReference = CA9679E80776CE7313E4187E /* Pods-amc-youtube.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VZVGW647BZ;
 				INFOPLIST_FILE = "amc-youtube/Info.plist";
@@ -449,6 +456,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "unum.amc-youtube";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
