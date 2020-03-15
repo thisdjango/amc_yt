@@ -34,7 +34,14 @@ class TableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "idcell", for: indexPath) as! TableViewCell
         cell.currentIndexPath = indexPath
+
         cell.mytitle.text = Service.shared.labels[indexPath.row]
+        var imageName = "white"
+        if traitCollection.userInterfaceStyle == .dark {
+            imageName = "dark"
+        }
+        cell.lineOne.image = UIImage(named: imageName)
+        cell.lineTwo.image = UIImage(named: imageName)
         cell.selectionStyle = .none
         cell.tableViewlDelegate = self
         cell.reloadCollectionView()

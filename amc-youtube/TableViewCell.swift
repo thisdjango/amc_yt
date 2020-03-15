@@ -19,6 +19,9 @@ class TableViewCell: UITableViewCell, UICollectionViewDataSource, UICollectionVi
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var mytitle: UILabel!
+    @IBOutlet weak var lineOne: UIImageView!
+    @IBOutlet weak var lineTwo: UIImageView!
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
