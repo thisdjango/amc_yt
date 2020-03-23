@@ -25,25 +25,11 @@
 		57DD31622416891800F913AF /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 57DD315F2416891800F913AF /* 1.png */; };
 		57DD31632416891800F913AF /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 57DD31602416891800F913AF /* 2.png */; };
 		57DD317A2416D1EF00F913AF /* ConfigureData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DD31792416D1EF00F913AF /* ConfigureData.swift */; };
-		57DD317B2416D37E00F913AF /* Pods_amc_youtube.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECC9D6029C763EAAC86444A4 /* Pods_amc_youtube.framework */; };
-		57DD317C2416D37E00F913AF /* Pods_amc_youtube.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = ECC9D6029C763EAAC86444A4 /* Pods_amc_youtube.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		6388DA5C137583D872D9AF79 /* libPods-amc-youtube.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 469859EC82ADF585F91DA2E2 /* libPods-amc-youtube.a */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		57DD317D2416D37E00F913AF /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				57DD317C2416D37E00F913AF /* Pods_amc_youtube.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
+		469859EC82ADF585F91DA2E2 /* libPods-amc-youtube.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-amc-youtube.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5719BD3623F02197001800F5 /* Playlist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Playlist.swift; sourceTree = "<group>"; };
 		5719BD3823F11E29001800F5 /* Videos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Videos.swift; sourceTree = "<group>"; };
 		5724D0F623F663660094DED4 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
@@ -74,7 +60,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				57DD317B2416D37E00F913AF /* Pods_amc_youtube.framework in Frameworks */,
+				6388DA5C137583D872D9AF79 /* libPods-amc-youtube.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -99,6 +85,7 @@
 				572C037223E0291600B950FE /* Products */,
 				3C14F4E5E8D1AA505BD20F6C /* Pods */,
 				8B5E9C7820FA6462050D45FC /* Frameworks */,
+				577DC336242923BD00C66EF6 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -132,6 +119,14 @@
 			path = "amc-youtube";
 			sourceTree = "<group>";
 		};
+		577DC336242923BD00C66EF6 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				ECC9D6029C763EAAC86444A4 /* Pods_amc_youtube.framework */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
 		57DD315D2416882000F913AF /* screenshots */ = {
 			isa = PBXGroup;
 			children = (
@@ -145,7 +140,7 @@
 		8B5E9C7820FA6462050D45FC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				ECC9D6029C763EAAC86444A4 /* Pods_amc_youtube.framework */,
+				469859EC82ADF585F91DA2E2 /* libPods-amc-youtube.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -161,8 +156,7 @@
 				572C036D23E0291600B950FE /* Sources */,
 				572C036E23E0291600B950FE /* Frameworks */,
 				572C036F23E0291600B950FE /* Resources */,
-				3166E4497BD2F9121129E2FE /* [CP] Embed Pods Frameworks */,
-				57DD317D2416D37E00F913AF /* Embed Frameworks */,
+				A112E7BBB7DFB7F714FD166D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -224,21 +218,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		3166E4497BD2F9121129E2FE /* [CP] Embed Pods Frameworks */ = {
+		A112E7BBB7DFB7F714FD166D /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-amc-youtube/Pods-amc-youtube-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-amc-youtube/Pods-amc-youtube-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			name = "[CP] Embed Pods Frameworks";
+			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-amc-youtube/Pods-amc-youtube-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-amc-youtube/Pods-amc-youtube-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-amc-youtube/Pods-amc-youtube-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-amc-youtube/Pods-amc-youtube-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		B9D870785B07B4F6C3453391 /* [CP] Check Pods Manifest.lock */ = {

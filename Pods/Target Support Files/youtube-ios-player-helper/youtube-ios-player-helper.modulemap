@@ -1,4 +1,4 @@
-framework module youtube_ios_player_helper {
+module youtube_ios_player_helper {
   umbrella header "youtube-ios-player-helper-umbrella.h"
 
   export *

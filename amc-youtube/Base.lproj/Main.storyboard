@@ -139,7 +139,7 @@
                     <navigationItem key="navigationItem" title="American Center in Moscow" id="7a8-kc-rfp">
                         <barButtonItem key="rightBarButtonItem" image="info.circle" catalog="system" id="nvW-VR-qjM">
                             <connections>
-                                <segue destination="MdW-BM-xcf" kind="show" id="8Mx-Bz-xqY"/>
+                                <segue destination="MdW-BM-xcf" kind="presentation" id="8Mx-Bz-xqY"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -257,33 +257,28 @@
             <objects>
                 <viewController id="MdW-BM-xcf" customClass="InfoViewController" customModule="amc_youtube" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SLr-5t-iup">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="Gz7-pM-1l0">
-                                <rect key="frame" x="40" y="117" width="334" height="109"/>
+                                <rect key="frame" x="40" y="29" width="334" height="109"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="109" id="lp4-Qe-Aut"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1EN-ka-pAM">
-                                <rect key="frame" x="40" y="720" width="334" height="36"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <rect key="frame" x="40" y="692" width="334" height="23"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="23" id="h8i-ny-7Md"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="+74957285243"/>
                                 <connections>
                                     <action selector="callAction:" destination="MdW-BM-xcf" eventType="touchUpInside" id="PZf-E6-9Du"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i7R-PX-JHv">
-                                <rect key="frame" x="40" y="766" width="334" height="36"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="+79688177128"/>
-                                <connections>
-                                    <action selector="callAction:" destination="MdW-BM-xcf" eventType="touchUpInside" id="wVw-fu-faj"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MAR-qG-1j7">
-                                <rect key="frame" x="40" y="812" width="334" height="30"/>
+                                <rect key="frame" x="40" y="758" width="334" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Q4G-wB-4HZ"/>
                                 </constraints>
@@ -294,7 +289,7 @@
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xK6-A3-PIw">
-                                <rect key="frame" x="40" y="304" width="334" height="333"/>
+                                <rect key="frame" x="40" y="216" width="334" height="393"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="300" id="qSD-94-b9q"/>
                                 </constraints>
@@ -304,7 +299,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Россия, Москва, Новинский Бульвар 21" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QbM-v7-lak">
-                                <rect key="frame" x="40" y="655" width="334" height="55"/>
+                                <rect key="frame" x="40" y="627" width="334" height="55"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="55" id="jK1-6P-jHG"/>
                                 </constraints>
@@ -314,7 +309,7 @@
                                 <dataDetectorType key="dataDetectorTypes" address="YES"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rfb-G2-ZHs">
-                                <rect key="frame" x="40.666666666666657" y="246" width="111" height="40"/>
+                                <rect key="frame" x="40.666666666666657" y="158" width="111" height="40"/>
                                 <color key="backgroundColor" red="0.0" green="0.65098039220000004" blue="0.70980392160000005" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="tDb-qd-s50"/>
@@ -329,7 +324,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6WM-W9-dVN">
-                                <rect key="frame" x="151.66666666666666" y="246" width="110.99999999999997" height="40"/>
+                                <rect key="frame" x="151.66666666666666" y="158" width="110.99999999999997" height="40"/>
                                 <color key="backgroundColor" red="0.090196078430000007" green="0.12549019610000001" blue="0.22352941179999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <state key="normal" title="Общайся">
@@ -340,7 +335,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YaD-2h-45O">
-                                <rect key="frame" x="262.66666666666669" y="246" width="111" height="40"/>
+                                <rect key="frame" x="262.66666666666669" y="158" width="111" height="40"/>
                                 <color key="backgroundColor" red="0.86666666670000003" green="0.1450980392" blue="0.23921568630000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <state key="normal" title="Создавай">
@@ -348,6 +343,17 @@
                                 </state>
                                 <connections>
                                     <action selector="showDetails:" destination="MdW-BM-xcf" eventType="touchUpInside" id="xxr-2J-7An"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i7R-PX-JHv">
+                                <rect key="frame" x="40" y="725" width="334" height="23"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="23" id="cJY-gf-GM7"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="+79688177128"/>
+                                <connections>
+                                    <action selector="callAction:" destination="MdW-BM-xcf" eventType="touchUpInside" id="wVw-fu-faj"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -394,7 +400,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rba-GH-0pf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-5300" y="276"/>
+            <point key="canvasLocation" x="-5300" y="275.22321428571428"/>
         </scene>
     </scenes>
     <resources>
